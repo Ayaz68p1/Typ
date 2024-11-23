@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  rdp_server:
+    image: remmina/remmina:latest  # Example Docker RDP server image
+    container_name: rdp_server
+    restart: always
+    ports:
+      - "3389:3389"  # Map RDP port
+    environment:
+      - USERNAME=your_username
+      - PASSWORD=your_password
+    volumes:
+      - ./data:/data  # Persist user data
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
